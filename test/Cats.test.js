@@ -33,23 +33,24 @@ contract('Cats', function ([owner, anotherAccount]) {
     
   });
 
-  // describe('token minting', function () {
-  //   const amount = 100;
-  //   const from = owner;
+  describe('token minting', function () {
+    const from = owner;
+    const firstTokenId = 1;
+    const secondTokenId = 2;
 
-  //   it('can mint to owner', async function () {
-  //     await token.mint(owner, amount, { from });
+    it('can mint to owner', async function () {
+      await token.mint(owner, firstTokenId, { from });
 
-  //     const balance = await token.balanceOf(owner);
-  //     assert.equal(balance, amount);
-  //   });
+      const balance = await token.balanceOf(owner);
+      assert.equal(balance, 1);
+    });
 
-  //   it('can mint to another account', async function () {
-  //     await token.mint(anotherAccount, amount, { from });
+    it('can mint to another account', async function () {
+      await token.mint(anotherAccount, secondTokenId, { from });
 
-  //     const balance = await token.balanceOf(anotherAccount);
-  //     assert.equal(balance, amount);
-  //   });
+      const balance = await token.balanceOf(anotherAccount);
+      assert.equal(balance, 1);
+    });
 
   //   it('cannot mint after minting stopped', async function () {
   //     await token.finishMinting({ from});
@@ -77,5 +78,5 @@ contract('Cats', function ([owner, anotherAccount]) {
   //     }
   //   });
 
-  // });
+  });
 });
