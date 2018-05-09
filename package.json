@@ -1,0 +1,35 @@
+{
+  "name": "cats",
+  "version": "1.0.0",
+  "description": "",
+  "main": "truffle.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "scripts/test.sh",
+    "coverage": "scripts/coverage.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abcoathup/Cats.git"
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/abcoathup/Cats/issues"
+  },
+  "homepage": "https://github.com/abcoathup/Cats#readme",
+  "dependencies": {
+    "dotenv": "^5.0.1",
+    "openzeppelin-solidity": "^1.9.0"
+  },
+  "devDependencies": {
+    "babel-polyfill": "^6.26.0",
+    "babel-register": "^6.26.0",
+    "ganache-cli": "^6.1.0",
+    "solidity-coverage": "^0.5.0",
+    "truffle": "^4.1.7",
+    "truffle-hdwallet-provider": "0.0.3"
+  }
+}
