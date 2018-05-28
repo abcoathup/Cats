@@ -1,12 +1,12 @@
 {
-    "name": "Cat",
-    "image": "https://robohash.org/1.png?set=set4", 
+    "name": "Joe",
+    "image": "https://robohash.org/3.png?set=set4", 
     "description": "Generic cat description. This really should be customized.", 
     "attributes": {
       "level": 23,
-      "personality": "happy", 
+      "personality": "grumpy", 
       "stamina": 13.7
     },
-    "external_url": "https://abcoathup.github.io/Cats/metadata/cat_1.json", 
+    "external_url": "https://abcoathup.github.io/Cats/metadata/cat_3.json", 
     "background_color": "00FFFF"
   }
