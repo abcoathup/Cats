@@ -22,7 +22,7 @@
   "homepage": "https://github.com/abcoathup/Cats#readme",
   "dependencies": {
     "dotenv": "^5.0.1",
-    "openzeppelin-solidity": "^1.9.0"
+    "openzeppelin-solidity": "^1.10.0"
   },
   "devDependencies": {
     "babel-polyfill": "^6.26.0",

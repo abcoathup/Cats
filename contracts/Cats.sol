@@ -8,12 +8,7 @@ import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
  * @title Cats NFT
  * @dev ERC721
  */
-contract Cats is ERC721Token, Ownable {
-    constructor() public 
-    
-    ERC721Token("Cats", "CAT")
-    { 
-    }
+contract Cats is ERC721Token("Cats", "CAT"), Ownable {
 
     function mint(address _to, string _tokenURI) public onlyOwner {
         uint256 newTokenId = _getNextTokenId();
