@@ -34,49 +34,69 @@ contract('Cats', function ([owner, anotherAccount]) {
   });
 
   describe('token minting', function () {
-    const from = owner;
-    const firstTokenId = 1;
-    const secondTokenId = 2;
+    const firstTokenUri = "https://1.com";
+    const secondTokenUri = "https://2.com";
+    const thirdTokenUri = "https://3.com";
 
     it('can mint to owner', async function () {
-      await token.mint(owner, firstTokenId, { from });
+      await token.mint(owner, firstTokenUri, { from: owner });
 
       const balance = await token.balanceOf(owner);
       assert.equal(balance, 1);
     });
 
     it('can mint to another account', async function () {
-      await token.mint(anotherAccount, secondTokenId, { from });
+      await token.mint(anotherAccount, secondTokenUri, { from: owner });
 
       const balance = await token.balanceOf(anotherAccount);
       assert.equal(balance, 1);
     });
 
-  //   it('cannot mint after minting stopped', async function () {
-  //     await token.finishMinting({ from});
+    it('cannot mint if not owner', async function () {
+      try {
+        await token.mint(anotherAccount, thirdTokenUri, { from: anotherAccount });
 
-  //     try {
-  //       await token.mint(owner, amount, { from });
-
-  //       assert.fail('Expected revert not received');
-  //     } catch (error) {
-  //       const revertFound = error.message.search('revert') >= 0;
-  //       assert(revertFound, `Expected "revert", got ${error} instead`);
-  //     }
-  //   });
-
-  //   it('cannot mint above cap', async function () {
-  //     await token.mint(owner, amount, { from });
-
-  //     try {
-  //       await token.mint(owner, _cap, { from });
-
-  //       assert.fail('Expected revert not received');
-  //     } catch (error) {
-  //       const revertFound = error.message.search('revert') >= 0;
-  //       assert(revertFound, `Expected "revert", got ${error} instead`);
-  //     }
-  //   });
+        assert.fail('Expected revert not received');
+      } catch (error) {
+        const revertFound = error.message.search('revert') >= 0;
+        assert(revertFound, `Expected "revert", got ${error} instead`);
+      }
+    });
 
   });
+
+  describe('token URI', function () {
+    const firstTokenId = 1;
+    const secondTokenId = 2;
+    const thirdTokenId = 3;
+
+    const firstTokenUri = "https://1.com";
+    const secondTokenUri = "https://2.com";
+    const thirdTokenUri = "https://3.com";
+    const changedTokenUri = "https://changed.com";
+
+    it('can change token URI if owner', async function () {
+      await token.mint(owner, firstTokenUri, { from: owner });
+      
+      await token.setTokenURI(firstTokenId, changedTokenUri, { from: owner });
+
+      const tokenUri = await token.tokenURI(firstTokenId);
+      assert.equal(changedTokenUri, tokenUri);
+    });
+
+    it('cannot change token URI if not owner', async function () {
+      await token.mint(owner, secondTokenUri, { from: owner });
+      
+      try {
+        await token.setTokenURI(secondTokenId, changedTokenUri, { from: anotherAccount });
+
+        assert.fail('Expected revert not received');
+      } catch (error) {
+        const revertFound = error.message.search('revert') >= 0;
+        assert(revertFound, `Expected "revert", got ${error} instead`);
+      }
+    });
+
+  });
+
 });

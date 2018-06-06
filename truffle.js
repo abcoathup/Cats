@@ -25,6 +25,11 @@ module.exports = {
       port: 8545,
       network_id: '*', // eslint-disable-line camelcase
     },
+    rinkeby: {
+      provider: infuraProvider('rinkeby'),
+      network_id: 4, // eslint-disable-line camelcase
+      gasPrice:1000000000,
+    },
     ropsten: {
       provider: ropstenProvider,
       network_id: 3, // eslint-disable-line camelcase
