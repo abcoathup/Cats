@@ -27,10 +27,10 @@
   "devDependencies": {
     "babel-polyfill": "^6.26.0",
     "babel-register": "^6.26.0",
-    "coveralls": "^3.0.1",
-    "ganache-cli": "^6.1.0",
-    "solidity-coverage": "^0.5.4",
-    "truffle": "^4.1.11",
+    "coveralls": "^3.0.2",
+    "ganache-cli": "^6.1.4",
+    "solidity-coverage": "^0.5.5",
+    "truffle": "^4.1.13",
     "truffle-hdwallet-provider": "0.0.3"
   }
 }
